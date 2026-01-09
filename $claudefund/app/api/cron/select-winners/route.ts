@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { selectTopThreeWinners } from '@/app/actions/select-winners'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
     // Verify cron secret for security
