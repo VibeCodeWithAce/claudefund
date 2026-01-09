@@ -92,7 +92,7 @@ export default function AdminPage() {
     setIsLoading(true)
     const result = await toggleSubmissions(!stats.settings.submissionsPaused)
     if (result.success) {
-      toast.success(result.message)
+      toast.success(result.message || 'Submissions toggled successfully')
       await loadStats()
     } else {
       toast.error(result.error || 'Failed to toggle')
@@ -107,7 +107,7 @@ export default function AdminPage() {
       !stats.settings.winnerSelectionPaused
     )
     if (result.success) {
-      toast.success(result.message)
+      toast.success(result.message || 'Winner selection toggled successfully')
       await loadStats()
     } else {
       toast.error(result.error || 'Failed to toggle')
@@ -128,11 +128,11 @@ export default function AdminPage() {
     const result = await selectTopThreeWinners()
 
     if (result.success) {
-      toast.success(result.message)
+      toast.success(result.message || 'Winners selected successfully')
       await loadStats()
       router.refresh()
     } else {
-      toast.error(result.message)
+      toast.error(result.message || 'Failed to select winners')
     }
 
     setIsLoading(false)
@@ -151,7 +151,7 @@ export default function AdminPage() {
     const result = await resetTimer()
 
     if (result.success) {
-      toast.success(result.message)
+      toast.success(result.message || 'Timer reset successfully')
       await loadStats()
       router.refresh()
     } else {
@@ -174,7 +174,7 @@ export default function AdminPage() {
     const result = await resetEverything()
 
     if (result.success) {
-      toast.success(result.message)
+      toast.success(result.message || 'Reset completed successfully')
       await loadStats()
       router.refresh()
     } else {
@@ -197,7 +197,7 @@ export default function AdminPage() {
     const result = await clearFundedBuilders()
 
     if (result.success) {
-      toast.success(result.message)
+      toast.success(result.message || 'Funded builders cleared successfully')
       await loadStats()
       router.refresh()
     } else {
