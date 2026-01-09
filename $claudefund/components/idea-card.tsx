@@ -21,22 +21,22 @@ export function IdeaCard({
   createdAt,
 }: IdeaCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+    <div className="bg-[#2a2a2a] rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-800">
       <div className="flex justify-between items-start gap-4 mb-3">
         <div className="flex-1 min-w-0">
-          <h3 className="text-xl font-bold text-gray-900 mb-1 break-words">
+          <h3 className="text-xl font-bold text-gray-100 mb-1 break-words">
             {title}
           </h3>
-          <p className="text-sm text-gray-500">{maskEmail(email)}</p>
+          <p className="text-sm text-gray-400">{maskEmail(email)}</p>
         </div>
         <LikeButton ideaId={id} initialLikes={likes} />
       </div>
 
-      <p className="text-gray-700 mb-4 leading-relaxed whitespace-pre-wrap break-words">
+      <p className="text-gray-300 mb-4 leading-relaxed whitespace-pre-wrap break-words">
         {description}
       </p>
 
-      <div className="text-xs text-gray-400">
+      <div className="text-xs text-gray-500">
         Submitted {new Date(createdAt).toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',

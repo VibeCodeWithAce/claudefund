@@ -14,7 +14,7 @@ export function Navigation() {
   ]
 
   return (
-    <nav className="bg-white border-b border-gray-200">
+    <nav className="bg-[#2a2a2a] border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex space-x-8">
@@ -22,10 +22,10 @@ export function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2 ${
+                className={`inline-flex items-center px-1 pt-1 text-sm font-medium border-b-2 transition-colors ${
                   pathname === link.href
-                    ? 'border-blue-500 text-gray-900'
-                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                    ? 'border-[#da7756] text-[#da7756]'
+                    : 'border-transparent text-gray-400 hover:border-[#da7756]/50 hover:text-gray-200'
                 }`}
               >
                 {link.label}

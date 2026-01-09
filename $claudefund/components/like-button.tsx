@@ -48,7 +48,7 @@ export function LikeButton({ ideaId, initialLikes }: LikeButtonProps) {
     return (
       <button
         disabled
-        className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-700"
+        className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-700 bg-[#1a1a1a] text-gray-400"
       >
         <svg
           className="w-5 h-5"
@@ -74,8 +74,8 @@ export function LikeButton({ ideaId, initialLikes }: LikeButtonProps) {
       disabled={isLoading}
       className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors ${
         hasLiked
-          ? 'border-red-500 bg-red-50 text-red-600'
-          : 'border-gray-300 bg-white text-gray-700 hover:border-red-300 hover:bg-red-50'
+          ? 'border-[#da7756] bg-[#da7756]/20 text-[#da7756]'
+          : 'border-gray-700 bg-[#1a1a1a] text-gray-400 hover:border-[#da7756]/50 hover:bg-[#da7756]/10'
       } disabled:opacity-50 disabled:cursor-not-allowed`}
     >
       <svg

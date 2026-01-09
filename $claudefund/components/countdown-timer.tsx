@@ -52,22 +52,22 @@ export function CountdownTimer({ customDeadline }: CountdownTimerProps) {
 
   if (!mounted) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-8 text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+      <div className="bg-[#2a2a2a] rounded-lg shadow-md p-8 text-center mb-8 border border-gray-800">
+        <h2 className="text-2xl font-bold text-gray-100 mb-2">
           Next Winner Selection
         </h2>
-        <div className="text-4xl font-mono text-blue-600">Loading...</div>
+        <div className="text-4xl font-mono text-[#da7756]">Loading...</div>
       </div>
     )
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-8 text-center mb-8">
-      <h2 className="text-2xl font-bold text-gray-900 mb-2">
+    <div className="bg-[#2a2a2a] rounded-lg shadow-md p-8 text-center mb-8 border border-gray-800">
+      <h2 className="text-2xl font-bold text-gray-100 mb-2">
         Next Winner Selection
       </h2>
-      <div className="text-4xl font-mono text-blue-600">{timeLeft}</div>
-      <p className="text-sm text-gray-500 mt-2">
+      <div className="text-4xl font-mono text-[#da7756]">{timeLeft}</div>
+      <p className="text-sm text-gray-400 mt-2">
         {customDeadline
           ? `Custom deadline: ${new Date(customDeadline).toLocaleString()}`
           : 'Winners selected at UTC midnight'}

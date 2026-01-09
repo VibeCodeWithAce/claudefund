@@ -209,25 +209,25 @@ export default function AdminPage() {
 
   if (isAuthenticated === null) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-xl text-gray-600">Loading...</div>
+      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
+        <div className="text-xl text-gray-400">Loading...</div>
       </div>
     )
   }
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center px-4">
         <div className="max-w-md w-full">
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+          <div className="bg-[#2a2a2a] rounded-lg shadow-md p-8 border border-gray-800">
+            <h1 className="text-3xl font-bold text-gray-100 mb-6 text-center">
               Admin Login
             </h1>
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-gray-300 mb-2"
                 >
                   Password
                 </label>
@@ -238,14 +238,14 @@ export default function AdminPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   disabled={isLoading}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition disabled:bg-gray-100"
+                  className="w-full px-4 py-3 bg-[#1a1a1a] text-gray-100 border border-gray-700 rounded-lg focus:ring-2 focus:ring-[#da7756] focus:border-transparent outline-none transition disabled:bg-gray-800"
                   placeholder="Enter admin password"
                 />
               </div>
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition"
+                className="w-full bg-[#da7756] text-white py-3 rounded-lg font-semibold hover:bg-[#c96645] disabled:opacity-50 disabled:cursor-not-allowed transition"
               >
                 {isLoading ? 'Logging in...' : 'Login'}
               </button>
@@ -257,13 +257,13 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#1a1a1a] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900">Admin Dashboard</h1>
+          <h1 className="text-4xl font-bold text-gray-100">Admin Dashboard</h1>
           <button
             onClick={handleLogout}
-            className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition"
+            className="px-4 py-2 text-gray-300 bg-[#2a2a2a] border border-gray-700 rounded-lg hover:bg-[#3a3a3a] transition"
           >
             Logout
           </button>
@@ -282,27 +282,27 @@ export default function AdminPage() {
 
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-sm font-medium text-gray-500 mb-2">
+              <div className="bg-[#2a2a2a] rounded-lg shadow-md p-6 border border-gray-800">
+                <h3 className="text-sm font-medium text-gray-400 mb-2">
                   Active Ideas
                 </h3>
-                <p className="text-3xl font-bold text-gray-900">
+                <p className="text-3xl font-bold text-gray-100">
                   {stats.totalActive}
                 </p>
               </div>
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-sm font-medium text-gray-500 mb-2">
+              <div className="bg-[#2a2a2a] rounded-lg shadow-md p-6 border border-gray-800">
+                <h3 className="text-sm font-medium text-gray-400 mb-2">
                   Funded Ideas
                 </h3>
-                <p className="text-3xl font-bold text-gray-900">
+                <p className="text-3xl font-bold text-gray-100">
                   {stats.totalFunded}
                 </p>
               </div>
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-sm font-medium text-gray-500 mb-2">
+              <div className="bg-[#2a2a2a] rounded-lg shadow-md p-6 border border-gray-800">
+                <h3 className="text-sm font-medium text-gray-400 mb-2">
                   Last Winner Selection
                 </h3>
-                <p className="text-lg font-semibold text-gray-900">
+                <p className="text-lg font-semibold text-gray-100">
                   {stats.settings.lastWinnerSelection
                     ? new Date(
                         stats.settings.lastWinnerSelection
@@ -313,15 +313,15 @@ export default function AdminPage() {
             </div>
 
             {/* Controls */}
-            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="bg-[#2a2a2a] rounded-lg shadow-md p-6 mb-8 border border-gray-800">
+              <h2 className="text-2xl font-bold text-gray-100 mb-6">
                 Controls
               </h2>
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-gray-700 rounded-lg bg-[#1a1a1a]">
                   <div>
-                    <h3 className="font-semibold text-gray-900">Submissions</h3>
-                    <p className="text-sm text-gray-500">
+                    <h3 className="font-semibold text-gray-100">Submissions</h3>
+                    <p className="text-sm text-gray-400">
                       Currently:{' '}
                       {stats.settings.submissionsPaused ? 'Paused' : 'Active'}
                     </p>
@@ -332,19 +332,19 @@ export default function AdminPage() {
                     className={`px-6 py-2 rounded-lg font-semibold transition ${
                       stats.settings.submissionsPaused
                         ? 'bg-green-600 text-white hover:bg-green-700'
-                        : 'bg-yellow-600 text-white hover:bg-yellow-700'
+                        : 'bg-[#da7756] text-white hover:bg-[#c96645]'
                     } disabled:opacity-50`}
                   >
                     {stats.settings.submissionsPaused ? 'Resume' : 'Pause'}
                   </button>
                 </div>
 
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-gray-700 rounded-lg bg-[#1a1a1a]">
                   <div>
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-gray-100">
                       Winner Selection
                     </h3>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-400">
                       Currently:{' '}
                       {stats.settings.winnerSelectionPaused
                         ? 'Paused'
@@ -357,42 +357,42 @@ export default function AdminPage() {
                     className={`px-6 py-2 rounded-lg font-semibold transition ${
                       stats.settings.winnerSelectionPaused
                         ? 'bg-green-600 text-white hover:bg-green-700'
-                        : 'bg-yellow-600 text-white hover:bg-yellow-700'
+                        : 'bg-[#da7756] text-white hover:bg-[#c96645]'
                     } disabled:opacity-50`}
                   >
                     {stats.settings.winnerSelectionPaused ? 'Resume' : 'Pause'}
                   </button>
                 </div>
 
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg bg-blue-50">
+                <div className="flex items-center justify-between p-4 border border-gray-700 rounded-lg bg-[#da7756]/10">
                   <div>
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-gray-100">
                       Manual Winner Selection
                     </h3>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-400">
                       Select top 3 ideas now and reset likes
                     </p>
                   </div>
                   <button
                     onClick={handleSelectWinners}
                     disabled={isLoading}
-                    className="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 disabled:opacity-50 transition"
+                    className="px-6 py-2 bg-[#da7756] text-white rounded-lg font-semibold hover:bg-[#c96645] disabled:opacity-50 transition"
                   >
                     Select Winners & Reset
                   </button>
                 </div>
 
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg bg-purple-50">
+                <div className="flex items-center justify-between p-4 border border-gray-700 rounded-lg bg-[#f5e6d3]/5">
                   <div>
-                    <h3 className="font-semibold text-gray-900">Reset Timer</h3>
-                    <p className="text-sm text-gray-500">
+                    <h3 className="font-semibold text-gray-100">Reset Timer</h3>
+                    <p className="text-sm text-gray-400">
                       Reset countdown to 24h from now (without selecting winners)
                     </p>
                   </div>
                   <button
                     onClick={handleResetTimer}
                     disabled={isLoading}
-                    className="px-6 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 disabled:opacity-50 transition"
+                    className="px-6 py-2 bg-[#f5e6d3] text-[#1a1a1a] rounded-lg font-semibold hover:bg-[#e5d6c3] disabled:opacity-50 transition"
                   >
                     Reset Timer
                   </button>
@@ -401,34 +401,34 @@ export default function AdminPage() {
             </div>
 
             {/* Top 3 Ideas */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="bg-[#2a2a2a] rounded-lg shadow-md p-6 border border-gray-800">
+              <h2 className="text-2xl font-bold text-gray-100 mb-6">
                 Current Top 3 Ideas (Full Emails)
               </h2>
               {stats.topIdeas.length === 0 ? (
-                <p className="text-gray-500">No active ideas yet</p>
+                <p className="text-gray-400">No active ideas yet</p>
               ) : (
                 <div className="space-y-4">
                   {stats.topIdeas.map((idea, index) => (
                     <div
                       key={idea.id}
-                      className="p-4 border border-gray-200 rounded-lg"
+                      className="p-4 border border-gray-700 rounded-lg bg-[#1a1a1a]"
                     >
                       <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
+                        <div className="flex-shrink-0 w-8 h-8 bg-[#da7756] text-white rounded-full flex items-center justify-center font-bold">
                           #{index + 1}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-bold text-gray-900 mb-1 break-words">
+                          <h3 className="font-bold text-gray-100 mb-1 break-words">
                             {idea.title}
                           </h3>
-                          <p className="text-sm text-blue-600 mb-2 break-all">
+                          <p className="text-sm text-[#da7756] mb-2 break-all">
                             {idea.email}
                           </p>
-                          <p className="text-gray-700 text-sm break-words">
+                          <p className="text-gray-300 text-sm break-words">
                             {idea.description}
                           </p>
-                          <p className="text-sm text-gray-500 mt-2">
+                          <p className="text-sm text-gray-400 mt-2">
                             Likes: {idea.likes}
                           </p>
                         </div>
@@ -440,21 +440,21 @@ export default function AdminPage() {
             </div>
 
             {/* Danger Zone - Reset Buttons */}
-            <div className="bg-white rounded-lg shadow-md p-6 border-2 border-red-200 mt-8">
-              <h2 className="text-2xl font-bold text-red-600 mb-2">
+            <div className="bg-[#2a2a2a] rounded-lg shadow-md p-6 border-2 border-red-900/50 mt-8">
+              <h2 className="text-2xl font-bold text-red-500 mb-2">
                 Danger Zone
               </h2>
-              <p className="text-sm text-gray-600 mb-6">
+              <p className="text-sm text-gray-400 mb-6">
                 These actions are irreversible. Use with caution.
               </p>
 
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 border border-red-200 rounded-lg bg-red-50">
+                <div className="flex items-center justify-between p-4 border border-red-900/50 rounded-lg bg-red-900/10">
                   <div>
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-gray-100">
                       Reset Everything
                     </h3>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-gray-400 mt-1">
                       Deletes all ACTIVE ideas, resets timer to 24h, resets cycle to 1
                     </p>
                     <p className="text-xs text-gray-500 mt-1">
@@ -470,12 +470,12 @@ export default function AdminPage() {
                   </button>
                 </div>
 
-                <div className="flex items-center justify-between p-4 border border-red-200 rounded-lg bg-red-50">
+                <div className="flex items-center justify-between p-4 border border-red-900/50 rounded-lg bg-red-900/10">
                   <div>
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-gray-100">
                       Clear Funded Builders
                     </h3>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-gray-400 mt-1">
                       Permanently delete all funded builders from the database
                     </p>
                   </div>

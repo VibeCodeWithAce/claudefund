@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className="antialiased bg-[#1a1a1a] text-gray-100">
         <Navigation />
         {children}
         <Toaster position="top-center" />
