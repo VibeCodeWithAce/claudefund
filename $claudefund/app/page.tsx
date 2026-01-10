@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] px-4">
       <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-5xl sm:text-6xl font-bold mb-6 font-radley">
+        <h1 className="text-7xl sm:text-8xl font-bold mb-6 font-radley">
           <span className="text-gray-100">Claude</span>
           <span className="text-[#da7756]">Fund</span>
         </h1>
