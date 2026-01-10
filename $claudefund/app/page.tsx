@@ -1,13 +1,23 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Home() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] px-4">
       <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 font-radley">
-          <span className="text-gray-100">Claude</span>
-          <span className="text-[#da7756]">Fund</span>
-        </h1>
+        <div className="flex items-center justify-center gap-4 mb-6">
+          <Image
+            src="/icon.png"
+            alt="ClaudeFund Logo"
+            width={96}
+            height={96}
+            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+          />
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-radley">
+            <span className="text-gray-100">Claude</span>
+            <span className="text-[#da7756]">Fund</span>
+          </h1>
+        </div>
 
         <p className="text-xl sm:text-2xl text-[#f5e6d3] mb-4 leading-relaxed">
           Get funded to build your idea with Claude Pro.
