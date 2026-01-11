@@ -11,6 +11,7 @@ import {
   resetTimer,
   resetEverything,
   clearFundedBuilders,
+  markAsProcessed,
 } from '@/app/actions/admin-actions'
 import { selectTopThreeWinners } from '@/app/actions/select-winners'
 import { CountdownTimer } from '@/components/countdown-timer'
@@ -34,6 +35,14 @@ interface AdminStats {
   }
   totalActive: number
   totalFunded: number
+  unprocessedWinners: Array<{
+    id: string
+    email: string
+    title: string
+    description: string
+    likes: number
+    fundedAt: Date | null
+  }>
 }
 
 export default function AdminPage() {
@@ -202,6 +211,21 @@ export default function AdminPage() {
       router.refresh()
     } else {
       toast.error(result.error || 'Failed to clear funded builders')
+    }
+
+    setIsLoading(false)
+  }
+
+  async function handleMarkAsProcessed(ideaId: string) {
+    setIsLoading(true)
+    const result = await markAsProcessed(ideaId)
+
+    if (result.success) {
+      toast.success(result.message || 'Marked as processed')
+      await loadStats()
+      router.refresh()
+    } else {
+      toast.error(result.error || 'Failed to mark as processed')
     }
 
     setIsLoading(false)
@@ -398,6 +422,59 @@ export default function AdminPage() {
                   </button>
                 </div>
               </div>
+            </div>
+
+            {/* Winners to Process */}
+            <div className="bg-[#2a2a2a] rounded-lg shadow-md p-6 border border-gray-800 mb-8">
+              <h2 className="text-2xl font-bold text-gray-100 mb-2">
+                Winners to Process
+              </h2>
+              <p className="text-sm text-gray-400 mb-6">
+                Funded builders who haven't received their Claude Pro subscription yet
+              </p>
+              {stats.unprocessedWinners.length === 0 ? (
+                <p className="text-gray-400">All winners have been processed!</p>
+              ) : (
+                <div className="space-y-4">
+                  {stats.unprocessedWinners.map((winner) => (
+                    <div
+                      key={winner.id}
+                      className="p-4 border border-gray-700 rounded-lg bg-[#1a1a1a]"
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-bold text-gray-100 mb-1 break-words">
+                            {winner.title}
+                          </h3>
+                          <p className="text-sm text-[#da7756] mb-2 break-all font-mono">
+                            {winner.email}
+                          </p>
+                          <p className="text-gray-300 text-sm break-words mb-2">
+                            {winner.description}
+                          </p>
+                          <div className="flex items-center gap-4 text-xs text-gray-400">
+                            <span>Likes: {winner.likes}</span>
+                            <span>•</span>
+                            <span>
+                              Funded:{' '}
+                              {winner.fundedAt
+                                ? new Date(winner.fundedAt).toLocaleDateString()
+                                : 'N/A'}
+                            </span>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => handleMarkAsProcessed(winner.id)}
+                          disabled={isLoading}
+                          className="px-4 py-2 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 disabled:opacity-50 transition flex-shrink-0"
+                        >
+                          Mark as Processed
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Top 3 Ideas */}

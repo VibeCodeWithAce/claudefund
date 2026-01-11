@@ -99,7 +99,7 @@ export async function getAdminStats() {
   }
 
   try {
-    const [topIdeas, settings, totalActive, totalFunded] = await Promise.all([
+    const [topIdeas, settings, totalActive, totalFunded, unprocessedWinners] = await Promise.all([
       prisma.idea.findMany({
         where: { status: 'active' },
         orderBy: { likes: 'desc' },
@@ -108,6 +108,13 @@ export async function getAdminStats() {
       prisma.settings.findUnique({ where: { id: 1 } }),
       prisma.idea.count({ where: { status: 'active' } }),
       prisma.idea.count({ where: { status: 'funded' } }),
+      prisma.idea.findMany({
+        where: {
+          status: 'funded',
+          processed: false
+        },
+        orderBy: { fundedAt: 'desc' },
+      }),
     ])
 
     return {
@@ -121,6 +128,7 @@ export async function getAdminStats() {
       },
       totalActive,
       totalFunded,
+      unprocessedWinners,
     }
   } catch (error) {
     console.error('Get admin stats error:', error)
@@ -230,5 +238,29 @@ export async function clearFundedBuilders() {
   } catch (error) {
     console.error('Clear funded builders error:', error)
     return { success: false, error: 'Failed to clear funded builders' }
+  }
+}
+
+export async function markAsProcessed(ideaId: string) {
+  const isAdmin = await checkAdminAuth()
+  if (!isAdmin) {
+    return { success: false, error: 'Unauthorized' }
+  }
+
+  try {
+    await prisma.idea.update({
+      where: { id: ideaId },
+      data: { processed: true },
+    })
+
+    revalidatePath('/admin-12345')
+
+    return {
+      success: true,
+      message: 'Marked as processed',
+    }
+  } catch (error) {
+    console.error('Mark as processed error:', error)
+    return { success: false, error: 'Failed to mark as processed' }
   }
 }

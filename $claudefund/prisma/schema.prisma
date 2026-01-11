@@ -20,11 +20,13 @@ model Idea {
   fundedAt    DateTime?
   createdAt   DateTime  @default(now())
   cycleId     Int       @default(1)
+  processed   Boolean   @default(false) // Track if admin has sent Claude Pro to winner
 
   @@index([status])
   @@index([likes])
   @@index([cycleId])
   @@index([email, cycleId])
+  @@index([status, processed])
 }
 
 model Settings {
